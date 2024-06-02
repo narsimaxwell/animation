@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Post</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffece6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative; /* Ensure the body element is the relative parent */
+        }
+
+        .schedule-btn {
+            position: absolute;
+            bottom: 20px;
+            margin-left: 300px; /* Added margin to the left */
+            background: #ff5722;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 122px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 10;
+            overflow: hidden; /* Added to ensure the popup originates from the button */
+        }
+
+        .schedule-btn:hover {
+            background: #e64a19;
+        }
+
+        .schedule-post-card {
+            position: absolute;
+            bottom: 60px;
+            left: 0; /* Align to the left edge of the button */
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            padding-top: 1%;
+            width: 270px;
+            text-align: center;
+            display: none;
+            opacity: 0;
+            transform: scale(0);
+            transform-origin: bottom;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            margin-bottom: 56px;
+            
+        }
+
+        .schedule-post-card.active {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+            
+        }
+
+        .Scheduleh1 {
+            text-align: left;
+            font-size: 13px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: 1px solid rgb(227, 223, 223);
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            padding: 0;
+        }
+
+        .schedule-post-card h2 {
+            color: #333;
+        }
+
+        .platform-icons {
+            display: flex;
+            justify-content: space-around;
+            margin: 10px 0;
+        }
+
+        .platform-icons img {
+            width: 30px;
+            height: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #ff5722;
+            font-weight: bold;
+        }
+
+        input[type="date"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            color: white;
+            background-color: #ff5722;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 14px;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            color: white;
+            filter: invert(1);
+            cursor: pointer;
+        }
+
+        .time-select {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        select {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .hours,
+        .minutes,
+        .ampm {
+            height: 42px;
+            width: 80px;
+            border-radius: 30px;
+            background-color: #ffc8b465;
+            border: 1.3px solid #e17756;
+            color: #c9512c;
+        }
+
+        .hours option,
+        .minutes option,
+        .ampm option {
+            background-color: white;
+        }
+
+        .recommended-times {
+            text-align: left;
+            font-size: 10px;
+        }
+
+        .recommended-times p {
+            margin: 0;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .Recommends {
+            font-size: 15px;
+            text-align: left;
+        }
+
+        .recommended-times ul {
+            list-style-type: none;
+            padding: 0;
+            border-bottom: 1px solid rgb(160, 155, 155);
+        }
+
+        .recommended-times li {
+            text-align: center;
+            font-size: 14px;
+            padding: 10px;
+            color: rgb(255, 115, 0);
+            border-radius: 5px;
+            margin: 1px 0;
+        }
+
+        .textlowcolor {
+            font-size: 10px;
+            font-weight: bold;
+            color: #666;
+            text-align: left;
+            margin-top: 22px;
+        }
+
+        #done {
+            width: 230px;
+            background: #2b2a2a;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        #done:hover {
+            background: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="schedule-post-card">
+        <button class="close-btn">&times;</button>
+        <h2 class="Scheduleh1">Schedule Post</h2>
+        <div class="platform-icons">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO2UwbWBTArdI30zBsPeIsr3zA3TxGnhRS-_1AeHZN6Q&s" alt="Platform 1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO2UwbWBTArdI30zBsPeIsr3zA3TxGnhRS-_1AeHZN6Q&s" alt="Platform 2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO2UwbWBTArdI30zBsPeIsr3zA3TxGnhRS-_1AeHZN6Q&s" alt="Platform 3">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO2UwbWBTArdI30zBsPeIsr3zA3TxGnhRS-_1AeHZN6Q&s" alt="Platform 4">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO2UwbWBTArdI30zBsPeIsr3zA3TxGnhRS-_1AeHZN6Q&s" alt="Platform 5">
+        </div>
+        <h1 class="textlowcolor">Select Date:</h1>
+        <input type="date" id="date" name="date">
+        
+        <h1 class="textlowcolor">Select Time:</h1>
+        <div class="time-select">
+            <select class="hours" id="hours" name="hours">
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <select class="minutes" id="minutes" name="minutes">
+                <option value="00">00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+            </select>
+            <select class="ampm" id="ampm" name="ampm">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+            </select>
+        </div>
+        <h1 class="Recommends">Recommended times</h1>
+        <div class="recommended-times">
+            <p>India (GMT+5:30)</p>
+            <ul>
+                <li>09:00 am - 10:00 am</li>
+                <li>12:00 pm - 01:00 pm</li>
+                <li>03:00 pm - 04:00 pm</li>
+                <li>08:00 pm - 09:00 pm</li>
+            </ul>
+        </div>
+        
+        <button id="done">Done</button>
+    </div>
+    
+    <button class="schedule-btn">Schedule</button>
+
+    <script>
+        const scheduleBtn = document.querySelector('.schedule-btn');
+        const popup = document.querySelector('.schedule-post-card');
+        let popupVisible = false;
+
+        scheduleBtn.addEventListener('click', () => {
+            if (!popupVisible) {
+                const rect = scheduleBtn.getBoundingClientRect();
+                popup.style.left = `${rect.left}px`;
+                popup.style.bottom = `${window.innerHeight - rect.top - scheduleBtn.offsetHeight}px`;
+                popup.style.display = 'block';
+                setTimeout(() => {
+                    popup.classList.add('active');
+                }, 10);
+                popupVisible = true;
+            } else {
+                popup.classList.remove('active');
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                }, 300);
+                popupVisible = false;
+            }
+        });
+
+        document.querySelector('.close-btn').addEventListener('click', () => {
+            popup.classList.remove('active');
+            setTimeout(() => {
+                popup.style.display = 'none';
+                popupVisible = false;
+            }, 300);
+        });
+
+        document.getElementById('done').addEventListener('click', () => {
+            alert('Post scheduled successfully!');
+            popup.classList.remove('active');
+            setTimeout(() => {
+                popup.style.display = 'none';
+                popupVisible = false;
+            }, 300);
+        });
+    </script>
+</body>
+</html>
