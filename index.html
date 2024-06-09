@@ -53,14 +53,12 @@
             transform-origin: bottom;
             transition: opacity 0.3s ease, transform 0.3s ease;
             margin-bottom: 56px;
-            
         }
 
         .schedule-post-card.active {
             display: block;
             opacity: 1;
             transform: scale(1);
-            
         }
 
         .Scheduleh1 {
@@ -92,13 +90,29 @@
 
         .platform-icons {
             display: flex;
-            justify-content: space-around;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 10px 0;
             margin: 10px 0;
+        }
+
+        .platform-icons::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for WebKit-based browsers */
+        }
+
+        .platform-icons {
+            -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
         }
 
         .platform-icons img {
             width: 30px;
             height: 30px;
+            margin-right: 10px;
+        }
+
+        .platform-icons img:last-child {
+            margin-right: 0;
         }
 
         label {
@@ -220,6 +234,11 @@
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO2UwbWBTArdI30zBsPeIsr3zA3TxGnhRS-_1AeHZN6Q&s" alt="Platform 3">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO2UwbWBTArdI30zBsPeIsr3zA3TxGnhRS-_1AeHZN6Q&s" alt="Platform 4">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO2UwbWBTArdI30zBsPeIsr3zA3TxGnhRS-_1AeHZN6Q&s" alt="Platform 5">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO2UwbWBTArdI30zBsPeIsr3zA3TxGnhRS-_1AeHZN6Q&s" alt="Platform 6">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO2UwbWBTArdI30zBsPeIsr3zA3TxGnhRS-_1AeHZN6Q&s" alt="Platform 7">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO2UwbWBTArdI30zBsPeIsr3zA3TxGnhRS-_1AeHZN6Q&s" alt="Platform 8">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO2UwbWBTArdI30zBsPeIsr3zA3TxGnhRS-_1AeHZN6Q&s" alt="Platform 9">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO2UwbWBTArdI30zBsPeIsr3zA3TxGnhRS-_1AeHZN6Q&s" alt="Platform 10">
         </div>
         <h1 class="textlowcolor">Select Date:</h1>
         <input type="date" id="date" name="date">
